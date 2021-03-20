@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {%block content%} 
+
+<a href="{% url 'create_todo' %}"><span class="oi oi-plus"></span></a>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for todo in todos %}
+            <!-- if condition for today or future clss -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>{{todo.title}}</b> <br />
+                            {{todo.desc}}<br />
+                            {{todo.due_time}}<br />
+                            Created by - {{todo.author}}<br />
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {%block content%} {% if error %} {{error}} <br />
+{% endif %}
+
+<h1>Create Todo</h1>
+<form
+  method="post"
+  action="{% url 'create_todo' %}"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %} Title: <br />
+  <input type="text" name="todo_title" /><br />
+  Description: <br />
+  <input type="textbox" name="desc" /><br />
+  Due Time: <br />
+  <input type="textbox" name="due_time" /><br /><br />
+  <input class="btn btn-primary" type="submit" value="Create Todo" />
+</form>
+
+{%endblock%}

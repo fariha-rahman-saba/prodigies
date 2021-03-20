@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {%block content%} 
+
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for meeting in meetings.all %}
+            <!-- if condition for today or future clss -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <h5>{{meeting.title}}</h5>
+                            {{meeting.time}}<br />
+                            <a href="{{meeting.url}}">{{meeting.url}}</a><br />
+                            {{meeting.created}}<br />
+                            Created by - {{meeting.author}}<br />
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}

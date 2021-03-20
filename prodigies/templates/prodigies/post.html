@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {%block content%}
+<div>
+  <a href="{% url 'create_post' %}"><span class="oi oi-plus"></span></a>
+</div>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for post in posts.all %}
+          <!-- if condition for today or future clss -->
+          <div class="col">
+              <div class="card shadow-sm">
+                  <div class="card-body">
+                      <p class="card-text">
+                        <h6><b>{{post.author}}, {{post.created}}</b></h6>
+                        {{post.post}} <br />
+                          
+                      </p>
+                  </div>
+              </div>
+          </div>
+          
+          {% endfor %}
+      </div>
+  </div>
+</div>
+{%endblock%}

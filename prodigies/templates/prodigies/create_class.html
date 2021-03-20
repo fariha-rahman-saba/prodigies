@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {%block content%} {% if error %} {{error}} <br />
+{% endif %}
+
+<h1>Create Class</h1>
+<form
+  method="post"
+  action="{% url 'create_class' %}"
+  enctype="multipart/form-data"
+>
+  {% csrf_token %} Title: <br />
+  <input type="text" name="class_title" /><br />
+  Date:<br />
+  <input type="text" name="date" /><br />
+  Time:<br />
+  <input type="text" name="time" /><br />
+  Url: <br />
+  <input type="text" name="url" /><br /><br />
+
+  <input class="btn btn-primary" type="submit" value="Add Class" />
+</form>
+
+{%endblock%}
