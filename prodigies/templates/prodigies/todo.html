@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for todo in todos %}
-            <!-- if condition for today or future clss -->
+            <a href="{% url 'edit_todo' todo.id %}">
             <div class="col">
                 <div class="card shadow-sm">
                     <div class="card-body">
@@ -14,12 +14,13 @@
                             <b>{{todo.title}}</b> <br />
                             {{todo.desc}}<br />
                             {{todo.due_time}}<br />
-                            Created by - {{todo.author}}<br />
+                            Created by - {{todo.user}}<br />
                             
                         </p>
                     </div>
                 </div>
             </div>
+        </a>
             {% endfor %}
         </div>
     </div>

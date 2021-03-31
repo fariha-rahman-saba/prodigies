@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RemoveField(
             model_name='todo',
-            name='due_date',
+            name='due_time',
         ),
         migrations.AddField(
             model_name='meeting',

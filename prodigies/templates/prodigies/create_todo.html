@@ -1,19 +1,39 @@
-{% extends 'base.html' %} {%block content%} {% if error %} {{error}} <br />
-{% endif %}
+{% extends "base.html" %}
 
-<h1>Create Todo</h1>
-<form
-  method="post"
-  action="{% url 'create_todo' %}"
-  enctype="multipart/form-data"
->
-  {% csrf_token %} Title: <br />
-  <input type="text" name="todo_title" /><br />
-  Description: <br />
-  <input type="textbox" name="desc" /><br />
-  Due Time: <br />
-  <input type="textbox" name="due_time" /><br /><br />
-  <input class="btn btn-primary" type="submit" value="Create Todo" />
-</form>
-
-{%endblock%}
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            <h2>New Todo</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="memo">Memo</label>
+                    <textarea name="memo" class="form-control" id="memo" ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="due_time">Due Date</label>
+                  <!-- <textarea name="due_time" class="form-control" id="memo" ></textarea> -->
+                  <input type="date" class="form-control" name="due_time" id="due_time">
+              </div>
+                <!-- <div class="form-group form-check">
+                    <input type="checkbox" name="important" class="form-check-input" id="important">
+                    <label class="form-check-label" for="important">Important</label>
+                </div> -->
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
