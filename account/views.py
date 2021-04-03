@@ -13,7 +13,7 @@ def signupuser(request):
                 user = User.objects.create_user(
                     request.POST['username'], password=request.POST['password1'])
                 login(request, user)
-                return redirect('home')
+                return redirect('post')
         else:
             return render(request, 'accounts/signup.html', {'error': 'Passwords must match'})
     else:
@@ -26,7 +26,7 @@ def loginuser(request):
             username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('post')
         else:
             return render(request, 'accounts/login.html', {'error': 'username or password is incorrect.'})
     else:
@@ -36,4 +36,4 @@ def loginuser(request):
 def logoutuser(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('home')
+        return redirect('post')

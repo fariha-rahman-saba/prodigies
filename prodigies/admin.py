@@ -1,6 +1,5 @@
 from django.contrib import admin
-from . models import Post, Meeting, Todo
+from . models import Post, Todo
 
 admin.site.register(Post)
-admin.site.register(Meeting)
 admin.site.register(Todo)
