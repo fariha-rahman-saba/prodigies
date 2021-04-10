@@ -22,17 +22,7 @@ def mytodos(request):
     return render(request, 'prodigies/mytodo.html', {'todos': todos})
 
 
-@login_required
-def create_todo(request):
-    if request.method == 'POST':
-        form = TodoForm(request.POST)
-        newtodo = form.save(commit=False)
-        newtodo.user = request.user
-        newtodo.save()
-        return redirect('todo')
 
-    else:
-        return render(request, 'prodigies/create_todo.html', {'form': TodoForm()})
 
 
 @login_required
@@ -65,6 +55,18 @@ def create_post(request):
     else:
         return render(request, 'prodigies/create_post.html')
 
+
+@login_required
+def create_todo(request):
+    if request.method == 'POST':
+        form = TodoForm(request.POST)
+        newtodo = form.save(commit=False)
+        newtodo.user = request.user
+        newtodo.save()
+        return redirect('todo')
+
+    else:
+        return render(request, 'prodigies/create_todo.html', {'form': TodoForm()})
 
 @login_required
 def post_ud(request, post_id):

@@ -6,7 +6,7 @@ class Todo(models.Model):
     title = models.CharField(max_length=100)
     desc = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
-    link = models.URLField(blank=True)
+    # link = models.URLField(blank=True)
     due_time = models.DateField()
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
