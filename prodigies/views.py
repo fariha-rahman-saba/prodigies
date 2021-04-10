@@ -4,8 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from . forms import TodoForm, PostForm
 
-
-@login_required
 def post(request):
     posts = Post.objects.order_by('-created')
     return render(request, 'prodigies/post.html', {'posts': posts})
@@ -23,9 +21,6 @@ def mytodos(request):
 
 
 
-
-
-@login_required
 def todo(request):
     todos = Todo.objects.all().order_by('due_time')
     return render(request, 'prodigies/todo.html', {'todos': todos})
@@ -84,10 +79,10 @@ def post_ud(request, post_id):
 def delete_post(request,post_id):
     post_to_delete=Post.objects.get(pk=post_id)
     post_to_delete.delete()
-    return redirect('post')
+    return redirect('myposts')
 
 @login_required
 def delete_todo(request,todo_id):
     todo_to_delete=Todo.objects.get(pk=todo_id)
     todo_to_delete.delete()
-    return redirect('todo')
+    return redirect('mytodos')

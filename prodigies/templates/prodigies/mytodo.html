@@ -4,9 +4,10 @@
 </div>
 
 <div class="album py-5 bg-light">
+  {% for todo in todos.all %}
   <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for todo in todos.all %}
+        
           <div class="col">
               <div class="card shadow-sm">
                   <div class="card-body">
@@ -23,8 +24,9 @@
 
         <br>
           
-          {% endfor %}
+          
       </div>
   </div>
+  {% endfor %}
 </div>
 {%endblock%}
