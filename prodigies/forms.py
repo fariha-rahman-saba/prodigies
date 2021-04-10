@@ -5,10 +5,10 @@ from . models import Todo, Post
 class TodoForm(ModelForm):
     class Meta:
         model = Todo
-        fields = ['title', 'memo', 'due_time']
+        fields = ['title', 'desc', 'due_time']
 
 
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['memo']
+        fields = ['post']

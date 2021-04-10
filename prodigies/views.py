@@ -16,6 +16,11 @@ def myposts(request):
     posts = Post.objects.filter(user=request.user).order_by('-created')
     return render(request, 'prodigies/myposts.html', {'posts': posts})
 
+@login_required
+def mytodos(request):
+    todos = Todo.objects.filter(user=request.user).order_by('-created')
+    return render(request, 'prodigies/mytodo.html', {'todos': todos})
+
 
 @login_required
 def create_todo(request):
@@ -71,3 +76,16 @@ def post_ud(request, post_id):
         form = PostForm(request.POST, instance=post)
         form.save()
         return redirect('post')
+
+
+@login_required
+def delete_post(request,post_id):
+    post_to_delete=Post.objects.get(pk=post_id)
+    post_to_delete.delete()
+    return redirect('post')
+
+@login_required
+def delete_todo(request,todo_id):
+    todo_to_delete=Todo.objects.get(pk=todo_id)
+    todo_to_delete.delete()
+    return redirect('todo')

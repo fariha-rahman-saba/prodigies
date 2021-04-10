@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {%block content%}
+<div>
+  <a href="{% url 'create_todo' %}"><span class="oi oi-plus"></span></a>
+</div>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for todo in todos.all %}
+          <div class="col">
+              <div class="card shadow-sm">
+                  <div class="card-body">
+                      <p class="card-text">
+                        <h4><b>{{todo.user}}</b></h4>
+                          <small>{{todo.created}}</small> <br> <br>
+                        <p><h5>{{todo.desc}} </h5></p>
+                        <a href="{% url 'edit_todo' todo.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'todo_delete' todo.id %}" class="btn btn-danger">Delete</a>
+                      </p>
+                  </div>
+              </div>
+          </div>
+
+        <br>
+          
+          {% endfor %}
+      </div>
+  </div>
+</div>
+{%endblock%}

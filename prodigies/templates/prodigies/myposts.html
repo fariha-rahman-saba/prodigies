@@ -7,20 +7,21 @@
   <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for post in posts.all %}
-        <a href="{% url 'edit_post' post.id %}">
-          <div class="col">
+            <div class="col">
               <div class="card shadow-sm">
                   <div class="card-body">
                       <p class="card-text">
                         <h4><b>{{post.user}}</b></h4>
                           <small>{{post.created}}</small> <br> <br>
-                        <p><h5>{{post.memo}} </h5></p>
-                          
+                        <p><h5>{{post.post}} </h5></p>
+                        <br>
+                        <a href="{% url 'edit_post' post.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
                       </p>
                   </div>
               </div>
           </div>
-        </a>
+       
         <br>
           
           {% endfor %}
